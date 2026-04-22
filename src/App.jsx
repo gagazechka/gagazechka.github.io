@@ -84,6 +84,17 @@ if (window.Telegram?.WebApp) {
   document.documentElement.style.setProperty('--background', tg.themeParams.bg_color);
 }
 
+const SaveCrossword = (crosswordData) => {
+  if (window.Telegram.WebApp) {
+    const tg = window.Telegram.WebApp;
+    const data = JSON.stringify(crosswordData);
+    tg.sendData(data);
+    tg.close();
+  } else {
+    console.error("Это работает только внутри Telegram Mini App");
+  }
+};
+
 export default function App() {
   return (
     <Router>
